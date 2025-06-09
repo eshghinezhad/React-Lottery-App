@@ -5,12 +5,12 @@ function Final() {
     <div>
       <div className="lottery-ticket">
             <h2>Numbers Selected</h2>
-            <ul className = "number-list">
+            {/* <ul className = "number-list">
                 {selectedNumbers.map((number, index) => (
                     <li key={index}> Derek: {number}</li>
                 ))}
-            </ul>
-            <p className = "total"> Total: ${cashTotal}</p>
+            </ul> */}
+            {/* <p className = "total"> Total: ${cashTotal}</p> */}
         </div>
     </div>
   )
