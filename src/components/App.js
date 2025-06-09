@@ -1,7 +1,8 @@
-import './App.css';
+import '../css/App.css';
 import Header from './Header';
 import Numbers from './Numbers';
 import Cash from './Cash';  
+import Final from './Final';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Numbers />
       <Cash />
+      <Final />
     </div>
   );
 }
