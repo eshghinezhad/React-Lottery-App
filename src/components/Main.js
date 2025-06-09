@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Numbers() {
+function Main() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Numbers() {
   )
 }
 
-export default Numbers
+export default Main
