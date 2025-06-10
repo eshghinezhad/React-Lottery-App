@@ -2,27 +2,90 @@
   text-align: center;
 }
 
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F3F2F0;
+    background-image: url('/public/background.png'); /* Place your image in the public/images folder */
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position:30px 200px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.numbers-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* ✅ 5 buttons per row */
+  gap: 10px; /* Space between buttons */
+  justify-content: center; /* ✅ Ensures grid is centered */
+  align-items: center;
+  width: fit-content; /* ✅ Ensures grid takes the correct width */
+  margin: 0 auto; /* ✅ Centers the grid horizontally */
+  padding: 20px;
+  background: rgb(31, 64, 140);
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.cash-clear {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; /* Space between buttons */
+  justify-content: center; /* ✅ Ensures grid is centered */
+  align-items: center;
+  width: fit-content; /* ✅ Ensures grid takes the correct width */
+  margin: 0 auto; /* ✅ Centers the grid horizontally */
+  padding: 20px;
+ 
+
+  /* display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px; */
 }
 
 
-.lottery-ticket {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.selection-box {
+  position: absolute;   
+  right: 0px;         
+  top: 100px;           
+
+  width: 300px;     
+  height: 600px;        
+
+  padding: 30px;
+  padding-top: 70px;
+  background: linear-gradient(to bottom, #fbc02d, #F3F2F0);
+  text-align: left;
+
+  font-weight: bold;
+}
+
+.my-button {
+  /* border: 2px solid gold; */
+  border-radius: 5px;
+  margin: 5px;
+  width: 50px; /* Adjust width */
+  height: 50px;
+}
+
+.title {
+  font-size: 2.5rem; 
+  font-weight: bold;
   text-align: center;
-  height: 525px; 
+  position: absolute;
+  width: 100%;
+  height: 140px;
+  top: 0px; 
+  background-color: #fbc02d;
+  padding-top: 40px; 
+  /* margin: 20px; */
 }

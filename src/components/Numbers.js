@@ -1,60 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 
-function Numbers() {
-  const [selectedNumbers, setSelectedNumbers] = useState([]);
-
-  // Handles number button click
-  const onNumberClick = (number) => {
-    setSelectedNumbers(prev =>
-      prev.includes(number)
-        ? prev.filter(n => n !== number)
-        : [...prev, number]
-    );
-  };
-
-  // Placeholder checkout function
-  const checkout = () => {
-    // Implement your checkout logic here
-    alert('Checkout clicked!');
-  };
-
-  // Placeholder random numbers function
-  const onRandomNumbers = () => {
-    // Implement your random number logic here
-    alert('Random numbers clicked!');
-  };
-
-  // Placeholder clear numbers function
-  const onClearNumbers = () => {
-    setSelectedNumbers([]);
-    alert('Clear clicked!');
-  };
-
+function Numbers({ buttonState, isDisabled, handleClick, pickRandomButtons, handleClear }) {
   return (
-    <div>
-      <div className="number-selector">
-        {[...Array(20).keys()].map(i => (
-            <Button variant = "contained"
-            key={i + 1}
-            className={`number-button ${selectedNumbers.includes(i + 1) ? 'selected' : ''}`}
-            onClick={() => onNumberClick(i + 1)}
-            >
-            {i+1}
-            </Button>
+    <>
+      <h4 style={{marginTop: 145, display: 'flex', justifyContent: 'center'}}>Select 5 Numbers</h4>
+      <div className="numbers-container">
+        {buttonState.map((isClicked, index) => (
+          <button
+            key={index}
+            disabled={isDisabled}
+            className="my-button"
+            onClick={() => handleClick(index)}
+            style={{
+              border: isClicked ? "5px solid darkorange" : "5px solid transparent",
+            }}
+          >
+            {index + 1}
+          </button>
         ))}
-
       </div>
-      <div className = "reset-random-button"  style = {{marginTop: '20px', alignItems: 'center'}}>
-            <ButtonGroup variant = "contained">
-                <Button variant = "contained" color = "error" onClick={onClearNumbers}>Clear</Button>
-                <Button variant = "contained" onClick={onRandomNumbers}>Random</Button>
-                <Button variant = "contained" color = "success" onClick = {checkout} >Cash</Button>
-            </ButtonGroup>
+      <div className="cash-clear">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={pickRandomButtons}
+          disabled={isDisabled}
+          sx={{ marginRight: 2 }}
+        >
+          Random
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleClear}
+        >
+          Clear
+        </Button>
       </div>
-    </div>
-  )
+    </>
+  );
 }
 
-export default Numbers
+export default Numbers;
