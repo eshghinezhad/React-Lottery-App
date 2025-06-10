@@ -20,63 +20,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
-
-.numbers-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* ✅ 5 buttons per row */
-  gap: 10px; /* Space between buttons */
-  justify-content: center; /* ✅ Ensures grid is centered */
-  align-items: center;
-  width: fit-content; /* ✅ Ensures grid takes the correct width */
-  margin: 0 auto; /* ✅ Centers the grid horizontally */
-  padding: 20px;
-  background: rgb(31, 64, 140);
-  border-radius: 30px;
-  margin-top: 10px;
-}
-
-.cash-clear {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; /* Space between buttons */
-  justify-content: center; /* ✅ Ensures grid is centered */
-  align-items: center;
-  width: fit-content; /* ✅ Ensures grid takes the correct width */
-  margin: 0 auto; /* ✅ Centers the grid horizontally */
-  padding: 20px;
- 
-
-  /* display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px; */
-}
-
-
-.selection-box {
-  position: absolute;   
-  right: 0px;         
-  top: 100px;           
-
-  width: 300px;     
-  height: 600px;        
-
-  padding: 30px;
-  padding-top: 70px;
-  background: linear-gradient(to bottom, #fbc02d, #F3F2F0);
-  text-align: left;
-
-  font-weight: bold;
-}
-
-.my-button {
-  /* border: 2px solid gold; */
-  border-radius: 5px;
-  margin: 5px;
-  width: 50px; /* Adjust width */
-  height: 50px;
-}
-
 .title {
   font-size: 2.5rem; 
   font-weight: bold;
@@ -87,5 +30,64 @@ code {
   top: 0px; 
   background-color: #fbc02d;
   padding-top: 40px; 
+    text-shadow: 2px 2px 8px rgba(242, 246, 248, 1), 0 4px 12px rgba(247, 243, 243, 0.9);
+
   /* margin: 20px; */
+}
+
+.numbers-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 buttons per row */
+  gap: 10px;
+  justify-content: center; 
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto; 
+  padding: 20px;
+  background: rgb(31, 64, 140);
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.my-button {
+  /* border: 2px solid gold; */
+  border-radius: 5px;
+  margin: 5px;
+  width: 50px; /* Adjust width */
+  height: 50px;
+}
+.random-clear {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  justify-content: center; 
+  align-items: center;
+  width: fit-content; 
+  margin: 0 auto; 
+  padding: 20px;
+ 
+  /* display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px; */
+}
+.cash{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.ticket-box {
+  position: absolute;   
+  right: 0px;         
+  top: 140px;           
+
+  width: 270px;     
+  height: 600px;        
+
+  padding: 30px;
+  padding-top: 70px;
+  background: linear-gradient(to bottom, #fbc02d, #F3F2F0);
+  text-align: left;
+
+  font-weight: bold;
 }

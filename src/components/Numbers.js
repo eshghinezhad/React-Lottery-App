@@ -20,7 +20,7 @@ function Numbers({ buttonState, isDisabled, handleClick, pickRandomButtons, hand
           </button>
         ))}
       </div>
-      <div className="cash-clear">
+      <div className="random-clear">
         <Button
           variant="contained"
           color="primary"
