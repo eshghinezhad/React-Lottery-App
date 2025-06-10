@@ -1,55 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react';
 import Button from '@mui/material/Button';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
-function Cash() {
-    // Define isDisabled as needed, for example always enabled:
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [amount, setAmount] = useState(0);
-    const [numOfPress, setNumOfPress] = useState(0);
-
-
-
-    const handleClick = (amount) => {
-        // if (selectedNumbers.length < 5) {
-        //   alert("Please select 5 numbers before adding cash value.");
-        //     } else {
-        //     setCashTotal(cashTotal + amount);
-        // }
-    };
-  const addMoney = (event) => {
-    if (numOfPress < 5) {
-      alert("You haven't selected all buttons yet!");
-    } else {
-      const value = parseInt(event.target.innerText.replace("$", ""), 10);
-      setAmount((prevTotal) => prevTotal + value);
-    }
-
-
-  }
-    return (
-        <>
-        <div className="cash">
-            <h2>Cash Input</h2>
-            <Button variant="contained" color="primary" onClick={() => handleClick(1)}>$1</Button>
-            <Button variant="contained" color="primary" onClick={() => handleClick(5)}>$5</Button>
-            <Button variant="contained" color="primary" onClick={() => handleClick(10)}>$10</Button>
-            <Button variant="contained" color="primary" onClick={() => handleClick(20)}>$20</Button>
-        </div>
-        <hr />
-        <div className="grid grid-cols-4 gap-2">
-              {["$1", "$5", "$10", "$20"].map((amount) => (
-                  <button
-                      key={amount}
-                      disabled={isDisabled}
-                      className={"big-button"}
-                      onClick={addMoney}
-                  >
-                      {amount}
-                  </button>
-              ))}
-          </div>
-          </>
-    );
+function Cash({ handleMoney, isDisabled }) {
+  const amounts = ["1", "5", "10", "20"];
+  return (
+    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', margin: '16px 0' }}>
+      {amounts.map((amount) => (
+        <Button
+          key={amount}
+          disabled={isDisabled}
+          variant="contained"
+          color="warning"
+          onClick={() => handleMoney(Number(amount))}
+          sx={{
+            margin: '4px',
+            minWidth: '64px',
+            minHeight: '64px',
+            borderRadius: '50%',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.6)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontWeight: 'bold',
+            fontSize: '1.1rem',
+            padding: 0,
+          }}
+        >
+          <MonetizationOnIcon sx={{ fontSize: 32, mb: 0.5 }} />
+          ${amount}
+        </Button>
+      ))}
+    </div>
+  );
 }
 
-export default Cash
+export default Cash;
