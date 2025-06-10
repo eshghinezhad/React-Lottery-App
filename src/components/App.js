@@ -3,19 +3,18 @@ import '../css/App.css'
 import Header from './Header';
 import Cash from './Cash';
 import Numbers from './Numbers';
-import Ticket from './Ticket'; // <-- Add this import
+import Ticket from './Ticket'; 
 
 function App() {
   const [numOfPress, setNumOfPress] = useState(0);
   const [buttonState, setButtonState] = useState(Array(20).fill(false));
   const [numberSelected, setNumberSelected] = useState([]);
   const [amount, setAmount] = useState(0);
-  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleClick = (index) => {
     if (buttonState[index] === false) {
       if (numOfPress >= 5) {
-        alert("Already click 5 times");
+        alert("\n  Sorry! \n  You can only select 5 numbers.");
       } else {
         const newButtonState = [...buttonState];
         newButtonState[index] = true;
@@ -34,38 +33,35 @@ function App() {
           : [...prevButton, index] // Add if not present
       );
     }
-
-    // Logs: 1 'number'
   };
 
-    const handleClear = () => {
-        setNumOfPress(0);
-        setAmount(0);
-        setNumberSelected([]);
-        setButtonState(Array(20).fill(false));
-     }
+  const handleClear = () => {
+      setNumOfPress(0);
+      setAmount(0);
+      setNumberSelected([]);
+      setButtonState(Array(20).fill(false));
+  }
 
-    const handleRandom = () => {
-        // Clear previous selections
-        handleClear();
+  const handleRandom = () => {
+      // Clear previous selections
+      handleClear();
 
-        //  5 unique random numbers
-        const numbers = new Set();
-        while (numbers.size < 5) {
-            numbers.add(Math.floor(Math.random() * 20));
-        }
-        const randomIndexes = Array.from(numbers);
+      //  5 unique random numbers
+      const numbers = new Set();
+      while (numbers.size < 5) {
+          numbers.add(Math.floor(Math.random() * 20));
+      }
+      const randomIndexes = Array.from(numbers);
 
-        // Update button state and selected numbers
-        const newButtonState = Array(20).fill(false);
-        randomIndexes.forEach(idx => {
-            newButtonState[idx] = true;
-        });
-
-        setButtonState(newButtonState);
-        setNumOfPress(5);
-        setNumberSelected(randomIndexes);
-    };
+      // Update button state and selected numbers
+      const newButtonState = Array(20).fill(false);
+      randomIndexes.forEach(idx => {
+          newButtonState[idx] = true;
+      });
+      setButtonState(newButtonState);
+      setNumOfPress(5);
+      setNumberSelected(randomIndexes);
+  };
     
   const handleMoney = (value) => {
     if (numOfPress < 5) {
@@ -73,32 +69,29 @@ function App() {
     } else {
       setAmount((prevTotal) => prevTotal + value);
     }
- };
+  };
   const handleCash = () => {
-      // Example dynamic amount
+     if (numOfPress < 5) {
+      alert("\n   Sorry!\n   You must select 5 numbers before cashing out!");
+    } else if (amount === 0) {
+      alert("\n   Sorry!\n   You must select a money amount before cashing out!");
+    }
+    else {
       alert(`  Thank you for your perchase. \n  The total amount is $${amount}.\n  The selected numbers are:    ${numberSelected.join(", ")}.\n\n   Good Bye.`) 
       handleClear();
+    }
   }
-
-
 
   return (
     <>
       <Header />
       <Numbers
         buttonState={buttonState}
-        isDisabled={isDisabled}
         handleClick={handleClick}
         pickRandomButtons={handleRandom}
         handleClear={handleClear}
       />
-
-
-      <Cash isDisabled={isDisabled} handleMoney={handleMoney} />
-      <div>
-          <button onClick={handleCash}>Cash</button>
-      </div>
-
+      <Cash handleMoney={handleMoney} handleCash={handleCash} />
       <Ticket numberSelected={numberSelected} amount={amount} />
     </>
   )
