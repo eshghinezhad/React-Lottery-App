@@ -3,7 +3,7 @@ import React from 'react';
 function Ticket({ numberSelected, amount, isDisabled, addMoney }) {
   return (
     <div className="ticket-box">
-      <h3>Numbers Selected:</h3>
+      <h4>Numbers Selected:</h4>
       <hr />
       <p>
         <ol>
