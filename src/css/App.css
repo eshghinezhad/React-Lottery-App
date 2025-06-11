@@ -35,7 +35,7 @@ code {
   /* margin: 20px; */
 }
 
-.numbers-container {
+.numbers {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 buttons per row */
   gap: 10px;

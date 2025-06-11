@@ -6,72 +6,45 @@ import Numbers from './Numbers';
 import Ticket from './Ticket'; 
 
 function App() {
-  const [numOfPress, setNumOfPress] = useState(0);
-  const [buttonState, setButtonState] = useState(Array(20).fill(false));
   const [numberSelected, setNumberSelected] = useState([]);
   const [amount, setAmount] = useState(0);
 
-  const handleClick = (index) => {
-    if (buttonState[index] === false) {
-      if (numOfPress >= 5) {
-        alert("\n  Sorry! \n  You can only select 5 numbers.");
-      } else {
-        const newButtonState = [...buttonState];
-        newButtonState[index] = true;
-        setNumberSelected((prevButton) => [...prevButton, index]);
-        setButtonState(newButtonState);
-        setNumOfPress(prevState => prevState + 1);
-      }
+  const handleClick = (number) => {
+    if (numberSelected.includes(number)) {
+      setNumberSelected(numberSelected.filter(n => n !== number));
+    } else if (numberSelected.length < 5) {
+      setNumberSelected([...numberSelected, number]);
     } else {
-      const newButtonState = [...buttonState];
-      newButtonState[index] = false;
-      setButtonState(newButtonState);
-      setNumOfPress(prevState => prevState - 1);
-      setNumberSelected((prevButton) =>
-        prevButton.includes(index)
-          ? prevButton.filter((num) => num !== index) // Remove if already present
-          : [...prevButton, index] // Add if not present
-      );
+      alert("You can only select up to 5 numbers.");
     }
   };
 
   const handleClear = () => {
-      setNumOfPress(0);
       setAmount(0);
-      setNumberSelected([]);
-      setButtonState(Array(20).fill(false));
+      setNumberSelected([]); 
   }
 
   const handleRandom = () => {
-      // Clear previous selections
-      handleClear();
-
-      //  5 unique random numbers
-      const numbers = new Set();
-      while (numbers.size < 5) {
-          numbers.add(Math.floor(Math.random() * 20));
+    handleClear();
+    const numbers = [];
+    while (numbers.length < 5) {
+      const number = Math.floor(Math.random() * 20) + 1;
+      if (!numbers.includes(number)) {
+        numbers.push(number);
       }
-      const randomIndexes = Array.from(numbers);
-
-      // Update button state and selected numbers
-      const newButtonState = Array(20).fill(false);
-      randomIndexes.forEach(idx => {
-          newButtonState[idx] = true;
-      });
-      setButtonState(newButtonState);
-      setNumOfPress(5);
-      setNumberSelected(randomIndexes);
+    }
+    setNumberSelected(numbers);
   };
     
   const handleMoney = (value) => {
-    if (numOfPress < 5) {
+    if (numberSelected.length < 5) {
       alert("\n   Sorry!\n   You must select 5 numbers before selecting the money!");
     } else {
       setAmount((prevTotal) => prevTotal + value);
     }
   };
   const handleCash = () => {
-     if (numOfPress < 5) {
+     if (numberSelected.length < 5) {
       alert("\n   Sorry!\n   You must select 5 numbers before cashing out!");
     } else if (amount === 0) {
       alert("\n   Sorry!\n   You must select a money amount before cashing out!");
@@ -85,8 +58,9 @@ function App() {
   return (
     <>
       <Header />
+      <h1 className="title">Lottery Game</h1>
       <Numbers
-        buttonState={buttonState}
+        numberSelected={numberSelected}
         handleClick={handleClick}
         pickRandomButtons={handleRandom}
         handleClear={handleClear}

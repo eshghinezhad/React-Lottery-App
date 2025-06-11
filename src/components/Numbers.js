@@ -1,23 +1,26 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-function Numbers({ buttonState, isDisabled, handleClick, pickRandomButtons, handleClear }) {
+function Numbers({ numberSelected, handleClick, pickRandomButtons, handleClear }) {
+const num = Array.from({ length: 20 }, (_, i) => i + 1); 
+
   return (
     <>
       <h4 style={{marginTop: 145, display: 'flex', justifyContent: 'center'}}>Select 5 Numbers</h4>
-      <div className="numbers-container">
-        {buttonState.map((isClicked, index) => (
-          <button
-            key={index}
-            disabled={isDisabled}
-            className="my-button"
-            onClick={() => handleClick(index)}
-            style={{
-              border: isClicked ? "5px solid darkorange" : "5px solid transparent",
-            }}
-          >
-            {index + 1}
-          </button>
+      <div className="numbers">
+       {num.map((number) => (
+        <button
+          key={number}
+          className="my-button"
+          onClick={() => handleClick(number)}
+          style={{
+            border: numberSelected.includes(number)
+              ? "5px solid darkorange"
+              : "5px solid transparent",
+          }}
+        >
+          {number}
+        </button>
         ))}
       </div>
       <div className="random-clear">
@@ -25,7 +28,6 @@ function Numbers({ buttonState, isDisabled, handleClick, pickRandomButtons, hand
           variant="contained"
           color="primary"
           onClick={pickRandomButtons}
-          disabled={isDisabled}
           sx={{ marginRight: 2 }}
         >
           Random
