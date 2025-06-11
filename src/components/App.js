@@ -50,7 +50,7 @@ function App() {
       alert("\n   Sorry!\n   You must select a money amount before cashing out!");
     }
     else {
-      alert(`  Thank you for your perchase. \n  The total amount is $${amount}.\n  The selected numbers are:    ${numberSelected.join(", ")}.\n\n   Good Bye.`) 
+      alert(`  Thank you for your perchase. \n  The selected numbers are:  ${numberSelected.join(", ")}\n  The total amount is:  $${amount}.\n\n   Good Bye.`) 
       handleClear();
     }
   }

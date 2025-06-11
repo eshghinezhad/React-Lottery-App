@@ -2,18 +2,17 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
-function Cash({ handleMoney, isDisabled, handleCash }) {
-  const amounts = ["1", "5", "10", "20"];
+function Cash({ handleMoney, handleCash }) {
+  const amounts = [1, 5, 10, 20];
   return (
       <>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', margin: '16px 0', flexWrap: 'wrap' }}>
           {amounts.map((amount) => (
             <Button
               key={amount}
-              disabled={isDisabled}
               variant="contained"
               color="warning"
-              onClick={() => handleMoney(Number(amount))}
+              onClick={() => handleMoney(amount)}
               sx={{
                 margin: '4px',
                 minWidth: '64px',
@@ -24,12 +23,12 @@ function Cash({ handleMoney, isDisabled, handleCash }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 fontWeight: 'bold',
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 padding: 0,
               }}
             >
-              <MonetizationOnIcon sx={{ fontSize: 32, mb: 0.5 }} />
-              ${amount}
+              <MonetizationOnIcon sx={{ fontSize: 37, mb: 0.5 }} />
+              {amount}
             </Button>
           ))}
         </div>
@@ -38,7 +37,7 @@ function Cash({ handleMoney, isDisabled, handleCash }) {
             variant="contained"
             color="primary"
             onClick={handleCash}
-            sx={{minWidth: '100px', fontWeight: 'bold', fontSize: '1.1rem' }}
+            sx={{minWidth: '100px', fontWeight: 'bold', fontSize: '0.95rem' }}
           >
             Cash
           </Button>

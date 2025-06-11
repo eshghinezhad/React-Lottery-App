@@ -8,18 +8,18 @@ const num = Array.from({ length: 20 }, (_, i) => i + 1);
     <>
       <h4 style={{marginTop: 145, display: 'flex', justifyContent: 'center'}}>Select 5 Numbers</h4>
       <div className="numbers">
-       {num.map((number) => (
+       {num.map((item) => (
         <button
-          key={number}
+          key={item}
           className="my-button"
-          onClick={() => handleClick(number)}
+          onClick={() => handleClick(item)}
           style={{
-            border: numberSelected.includes(number)
+            border: numberSelected.includes(item)
               ? "5px solid darkorange"
               : "5px solid transparent",
           }}
         >
-          {number}
+          {item}
         </button>
         ))}
       </div>
@@ -28,7 +28,8 @@ const num = Array.from({ length: 20 }, (_, i) => i + 1);
           variant="contained"
           color="primary"
           onClick={pickRandomButtons}
-          sx={{ marginRight: 2 }}
+          sx={{marginRight: 2 , minWidth: '100px', fontWeight: 'bold', fontSize: '0.95rem' }}
+
         >
           Random
         </Button>
@@ -36,6 +37,8 @@ const num = Array.from({ length: 20 }, (_, i) => i + 1);
           variant="contained"
           color="primary"
           onClick={handleClear}
+          sx={{minWidth: '100px', fontWeight: 'bold', fontSize: '0.95rem' }}
+
         >
           Clear
         </Button>

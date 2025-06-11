@@ -8,7 +8,7 @@ function Ticket({ numberSelected, amount, isDisabled, addMoney }) {
       <p>
         <ol>
           {numberSelected.length > 0
-            ? numberSelected.map((num) => <li key={num}> Number  {num + 1}</li>) // Add 1 to each selected number
+            ? numberSelected.map((num) => <li key={num}> Number  {num }</li>) // Add 1 to each selected number
             : ""}
         </ol>
       </p>
