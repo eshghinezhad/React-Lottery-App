@@ -40,7 +40,7 @@ function App() {
     if (numberSelected.length < 5) {
       alert("\n   Sorry!\n   You must select 5 numbers before selecting the money!");
     } else {
-      setAmount((prevTotal) => prevTotal + value);
+      setAmount(amount + value);
     }
   };
   const handleCash = () => {
