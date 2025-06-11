@@ -11,11 +11,11 @@ function App() {
 
   const handleClick = (number) => {
     if (numberSelected.includes(number)) {
-      setNumberSelected(numberSelected.filter(n => n !== number));
+      setNumberSelected(numberSelected.filter(n => n !== number)); // Remove the number from numberSelected list if it's already selected
     } else if (numberSelected.length < 5) {
-      setNumberSelected([...numberSelected, number]);
+        setNumberSelected([...numberSelected, number]); // Add the number if it's not already selected
     } else {
-      alert("You can only select up to 5 numbers.");
+        alert("You can only select up to 5 numbers.");
     }
   };
 
@@ -25,7 +25,7 @@ function App() {
   }
 
   const handleRandom = () => {
-    handleClear();
+    setAmount(0);
     const numbers = [];
     while (numbers.length < 5) {
       const number = Math.floor(Math.random() * 20) + 1;
@@ -58,7 +58,6 @@ function App() {
   return (
     <>
       <Header />
-      <h1 className="title">Lottery Game</h1>
       <Numbers
         numberSelected={numberSelected}
         handleClick={handleClick}

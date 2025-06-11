@@ -16,7 +16,7 @@ const num = Array.from({ length: 20 }, (_, i) => i + 1);
           style={{
             border: numberSelected.includes(item)
               ? "5px solid darkorange"
-              : "5px solid transparent",
+              : "5px solid ",
           }}
         >
           {item}
@@ -38,7 +38,6 @@ const num = Array.from({ length: 20 }, (_, i) => i + 1);
           color="primary"
           onClick={handleClear}
           sx={{minWidth: '100px', fontWeight: 'bold', fontSize: '0.95rem' }}
-
         >
           Clear
         </Button>

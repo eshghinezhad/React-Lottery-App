@@ -27,8 +27,8 @@ function Cash({ handleMoney, handleCash }) {
                 padding: 0,
               }}
             >
-              <MonetizationOnIcon sx={{ fontSize: 37, mb: 0.5 }} />
-              {amount}
+              <MonetizationOnIcon sx={{ fontSize: 37, mb: 0.5 }} /> {/*Add $ Icon on the Button*/}
+              {amount}  
             </Button>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Ticket({ numberSelected, amount, isDisabled, addMoney }) {
+function Ticket({ numberSelected, amount }) {
   return (
     <div className="ticket-box">
       <h4>Numbers Selected:</h4>
@@ -8,7 +8,10 @@ function Ticket({ numberSelected, amount, isDisabled, addMoney }) {
       <p>
         <ol>
           {numberSelected.length > 0
-            ? numberSelected.map((num) => <li key={num}> Number  {num }</li>) // Add 1 to each selected number
+            ? numberSelected.map((item) => 
+              <li key={item}>
+                   Number {item}
+              </li>) // Add 1 to each selected number
             : ""}
         </ol>
       </p>
