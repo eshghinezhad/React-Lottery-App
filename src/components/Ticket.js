@@ -11,7 +11,7 @@ function Ticket({ numberSelected, amount }) {
             ? numberSelected.map((item) => 
               <li key={item}>
                    Number {item}
-              </li>) // Add 1 to each selected number
+              </li>) 
             : ""}
         </ol>
       </p>
